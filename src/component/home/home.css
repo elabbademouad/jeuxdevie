@@ -1,0 +1,12 @@
+.doc{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.title{
+    text-align: center;
+    line-height: 40px;
+    color: #343434;
+}
+p{
+    text-align: justify;
+}
