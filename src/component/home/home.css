@@ -1,6 +1,7 @@
 .doc{
     margin-left: 40px;
     margin-right: 40px;
+    margin-bottom: 50px;
 }
 .title{
     text-align: center;
@@ -9,4 +10,31 @@
 }
 p{
     text-align: justify;
+}
+.cell{
+    width: 30px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+}
+
+.green{
+    background-color:green ;
+}
+.red{
+    background-color: red;
+}
+
+td{
+    margin: 0px;
+    padding: 0px;
+    border-style: solid;
+    border-color: gray;
+    border-width: 0.5px;
+}
+tr{
+    margin: 0px;
+    padding: 0px;
+    
 }
