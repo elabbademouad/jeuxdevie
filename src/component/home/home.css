@@ -12,8 +12,8 @@ p{
     text-align: justify;
 }
 .cell{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     margin: 0px;
     padding: 0px;
     background-color: white;
@@ -37,4 +37,13 @@ tr{
     margin: 0px;
     padding: 0px;
     
+}
+.figure{
+    border-style: solid;
+    border-color: gray;
+    padding: 5px;
+}
+.figureTitle{
+    text-align: center;
+    color: gray;
 }
