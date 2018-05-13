@@ -15,39 +15,39 @@ class Home extends React.Component{
                 <div className="col-lg-2 col-md-3 col-sm-4">
                     <table>
                     <tr>
-                            <td><div className='cell'></div></td>
-                            <td><div className='cell'></div></td>
-                            <td><div className='cell'></div></td>
-                            <td><div className='cell'></div></td>
-                            <td><div className='cell'></div></td>
+                            <td><div className='cellE'></div></td>
+                            <td><div className='cellE'></div></td>
+                            <td><div className='cellE'></div></td>
+                            <td><div className='cellE'></div></td>
+                            <td><div className='cellE'></div></td>
                     </tr> 
                     <tr>
-                            <td><div className='cell'></div></td>
-                            <td><div className='cell green'></div></td>
-                            <td><div className='cell green'></div></td>
-                            <td><div className='cell green'></div></td>
-                            <td><div className='cell'></div></td>
+                            <td><div className='cellE'></div></td>
+                            <td><div className='cellE green'></div></td>
+                            <td><div className='cellE green'></div></td>
+                            <td><div className='cellE green'></div></td>
+                            <td><div className='cellE'></div></td>
                     </tr> 
                     <tr>
-                            <td><div className='cell'></div></td>
-                            <td><div className='cell green'></div></td>
-                            <td><div className='cell red'></div></td>
-                            <td><div className='cell green'></div></td>
-                            <td><div className='cell'></div></td>
+                            <td><div className='cellE'></div></td>
+                            <td><div className='cellE green'></div></td>
+                            <td><div className='cellE red'></div></td>
+                            <td><div className='cellE green'></div></td>
+                            <td><div className='cellE'></div></td>
                     </tr> 
                     <tr>
-                            <td><div className='cell'></div></td>
-                            <td><div className='cell green'></div></td>
-                            <td><div className='cell green'></div></td>
-                            <td><div className='cell green'></div></td>
-                            <td><div className='cell'></div></td>
+                            <td><div className='cellE'></div></td>
+                            <td><div className='cellE green'></div></td>
+                            <td><div className='cellE green'></div></td>
+                            <td><div className='cellE green'></div></td>
+                            <td><div className='cellE'></div></td>
                     </tr> 
                     <tr>
-                            <td><div className='cell'></div></td>
-                            <td><div className='cell'></div></td>
-                            <td><div className='cell'></div></td>
-                            <td><div className='cell'></div></td>
-                            <td><div className='cell'></div></td>
+                            <td><div className='cellE'></div></td>
+                            <td><div className='cellE'></div></td>
+                            <td><div className='cellE'></div></td>
+                            <td><div className='cellE'></div></td>
+                            <td><div className='cellE'></div></td>
                     </tr> 
                     </table>
                 </div>
