@@ -5,9 +5,6 @@ import About from '../about/about'
 import Play from '../play/play'
 import './master.css'
 class Master extends React.Component{
-    constructor(){
-        super();
-    }
     render(){
         return(
             <div >
@@ -24,13 +21,12 @@ class Master extends React.Component{
                         <ul>
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/play">Jouer</Link></li>
-                            <li><Link to="/play">Exemples</Link></li>
                             <li style={{float:'right'}}><Link to="/about">About</Link></li>
                         </ul>
                     <div>
                         <Route exact path="/" component={Home} />
-                        <Route path="/about" component={About} />
-                        <Route path="/play" component={Play} />
+                        <Route path="/about"  component={About} />
+                        <Route path="/play"   component={Play} />
                     </div>
                     </div>
                 </Router>

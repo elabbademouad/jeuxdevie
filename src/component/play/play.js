@@ -5,8 +5,7 @@ class Play extends React.Component{
     constructor(){
         super();
         this.NextGeneration=this.NextGeneration.bind(this);
-        this.state={scenne:[],
-                    generation:0};
+        this.state={scenne:[],generation:0};
         this.speed=1;
         this.run=false;
         this.Initilize(50);
@@ -142,6 +141,7 @@ class Play extends React.Component{
         return (
             <div className='container'>
                 <div className='row  justify-content-center'>
+                    <div className="col-10">
                         <form className="form-inline">
                             <div className="form-group-sm constrol">
                                 <select className="form-control" ref='gridSize'  onChange={this.OnSizeChange.bind(this)} >
@@ -169,11 +169,13 @@ class Play extends React.Component{
                                 <label>Génération : {this.state.generation}</label>
                             </div>
                         </form>
+                        <table className='grid' >
+                            {this.ScenneRender()}
+                        </table>
                     </div>
-                <div className='row  justify-content-center'>
-                    <table className='grid' >
-                        {this.ScenneRender()}
-                    </table>
+                    <div className="col-2">
+                        <h1>Some Examples</h1>
+                    </div>
                 </div>
             </div>
         );
