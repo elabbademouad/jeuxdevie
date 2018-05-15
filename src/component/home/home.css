@@ -38,12 +38,3 @@ tr{
     padding: 0px;
     
 }
-.figure{
-    border-style: solid;
-    border-color: gray;
-    padding: 5px;
-}
-.figureTitle{
-    text-align: center;
-    color: gray;
-}

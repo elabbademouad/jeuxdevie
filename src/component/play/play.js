@@ -7,9 +7,9 @@ class Play extends React.Component{
         this.NextGeneration=this.NextGeneration.bind(this);
         this.state={scenne:[],
                     generation:0};
-        this.speed=500;
+        this.speed=1;
         this.run=false;
-        this.Initilize(40);
+        this.Initilize(50);
     }
     componentDidMount(){
         this.interval=setInterval(this.NextGeneration,this.speed);
@@ -136,12 +136,12 @@ class Play extends React.Component{
     }
     SpeedChange(){
         clearInterval(this.interval);
-        this.interval=setInterval(this.NextGeneration,501-this.refs.speed.value);
+        this.interval=setInterval(this.NextGeneration,1001-this.refs.speed.value);
     }
     render(){
         return (
             <div className='container'>
-                <div className='row'>
+                <div className='row  justify-content-center'>
                         <form className="form-inline">
                             <div className="form-group-sm constrol">
                                 <select className="form-control" ref='gridSize'  onChange={this.OnSizeChange.bind(this)} >
@@ -163,14 +163,14 @@ class Play extends React.Component{
                                 <input type="button" className="form-control btn btn-info" onClick={this.ClearGrid.bind(this)} value="Clear"/>
                             </div>
                             <div className="form-group-sm constrol">
-                                <input type="range" ref='speed' min='1' defaultValue='500' max='1000' onChange={this.SpeedChange.bind(this)} className="form-control"  placeholder="Speed"/>
+                                <input type="range" ref='speed' min='1' defaultValue='1000' max='1000' onChange={this.SpeedChange.bind(this)} className="form-control"  placeholder="Speed"/>
                             </div>
                             <div className="form-group-sm constrol">
                                 <label>Génération : {this.state.generation}</label>
                             </div>
                         </form>
                     </div>
-                <div className='row'>
+                <div className='row  justify-content-center'>
                     <table className='grid' >
                         {this.ScenneRender()}
                     </table>
