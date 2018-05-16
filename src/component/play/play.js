@@ -1,5 +1,7 @@
 import React from 'react';
 import './play.css';
+import Cell from '../../Classes/Cell'
+import specialShape from '../../data/specialShape'
 
 class Play extends React.Component{
     constructor(){
@@ -137,13 +139,31 @@ class Play extends React.Component{
         clearInterval(this.interval);
         this.interval=setInterval(this.NextGeneration,1001-this.refs.speed.value);
     }
+    ShapeRender(cells){
+        let shape=[];
+        for (let i = 0; i < 15; i++) {
+            let shaperow=[];
+            for (let j = 0; j < 15; j++) {
+                shaperow.push(new Cell('cell',i,j));
+            }
+            shape.push(shaperow)
+        }      
+        const element=shape.map((row,index)=>
+            <tr key={index}>
+                {row.map((cell,index2)=>
+                    <td key={index2} ><div className={cell.className}  ></div></td>
+                )}
+            </tr>
+        );
+        return element;
+    }
     render(){
         return (
-            <div className='container'>
-                <div className='row  justify-content-center'>
-                    <div className="col-10">
+            <div className='container-fluid'>
+                <div className='row '>
+                    <div className="col" align="left" >
                         <form className="form-inline">
-                            <div className="form-group-sm constrol">
+                            <div className="form-group-sm control">
                                 <select className="form-control" ref='gridSize'  onChange={this.OnSizeChange.bind(this)} >
                                     <option>50</option>
                                     <option>60</option>
@@ -153,19 +173,19 @@ class Play extends React.Component{
                                     <option>100</option>
                                 </select>
                             </div>
-                            <div className="form-group constrol">
+                            <div className="form-group control">
                                 <input type="button"  className="form-control btn btn-success" onClick={this.Run.bind(this)} value="Run"/>
                             </div>
-                            <div className="form-group constrol">
+                            <div className="form-group control">
                                 <input type="button" className="form-control btn btn-danger" onClick={this.Pause.bind(this)} value="Pause"/>
                             </div>
-                            <div className="form-group constrol">
+                            <div className="form-group control">
                                 <input type="button" className="form-control btn btn-info" onClick={this.ClearGrid.bind(this)} value="Clear"/>
                             </div>
-                            <div className="form-group-sm constrol">
+                            <div className="form-group-sm control">
                                 <input type="range" ref='speed' min='1' defaultValue='1000' max='1000' onChange={this.SpeedChange.bind(this)} className="form-control"  placeholder="Speed"/>
                             </div>
-                            <div className="form-group-sm constrol">
+                            <div className="form-group-sm control">
                                 <label>Génération : {this.state.generation}</label>
                             </div>
                         </form>
@@ -173,19 +193,21 @@ class Play extends React.Component{
                             {this.ScenneRender()}
                         </table>
                     </div>
-                    <div className="col-2">
-                        <h1>Some Examples</h1>
+                    <div className="col specialShapeContainer"  >
+                        {specialShape.map(example=>
+                            <div className="specialShape">
+                                <div className="figure">
+                                    <table>
+                                        {this.ShapeRender(example.Cells)}
+                                    </table>
+                                </div>
+                                <div className="desc">{example.Name}</div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
         );
-    }
-}
-class Cell{
-    constructor(className,x,y){
-        this.className=className;
-        this.x=x;
-        this.y=y;
     }
 }
 export default Play;

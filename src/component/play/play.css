@@ -115,6 +115,25 @@ input[type=range] {
   input[type=range]:focus::-ms-fill-upper {
     background: #2497E3;
   }
-  .constrol{
+  .control{
       margin: 2px;
+  }
+
+  .specialShape {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 168px;
+  }
+
+.specialShape:hover {
+    border: 1px solid #777;
+  }
+
+.desc {
+    padding: 10px;
+    text-align: center;
+  }
+  .specialShapeContainer{
+    margin-top: 49px;
   }

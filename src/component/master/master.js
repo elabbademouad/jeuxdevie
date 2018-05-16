@@ -23,7 +23,7 @@ class Master extends React.Component{
                             <li><Link to="/play">Jouer</Link></li>
                             <li style={{float:'right'}}><Link to="/about">About</Link></li>
                         </ul>
-                    <div>
+                    <div >
                         <Route exact path="/" component={Home} />
                         <Route path="/about"  component={About} />
                         <Route path="/play"   component={Play} />
