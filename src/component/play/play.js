@@ -123,6 +123,7 @@ class Play extends React.Component{
         else
             cell.className='cell';
        this.setState({scenne:sc});
+       console.log(selectedCell);
     }
     OnSizeChange(){
         this.Grid(this.refs.gridSize.value);
@@ -140,6 +141,7 @@ class Play extends React.Component{
         this.interval=setInterval(this.NextGeneration,1001-this.refs.speed.value);
     }
     ShapeRender(cells){
+
         let shape=[];
         for (let i = 0; i < 15; i++) {
             let shaperow=[];
@@ -147,7 +149,10 @@ class Play extends React.Component{
                 shaperow.push(new Cell('cell',i,j));
             }
             shape.push(shaperow)
-        }      
+        }
+        cells.forEach(element => {
+            shape[element.x][element.y].className='cell active';
+        });
         const element=shape.map((row,index)=>
             <tr key={index}>
                 {row.map((cell,index2)=>
@@ -190,15 +195,19 @@ class Play extends React.Component{
                             </div>
                         </form>
                         <table className='grid' >
-                            {this.ScenneRender()}
+                            <tbody>
+                                {this.ScenneRender()}
+                            </tbody>
                         </table>
                     </div>
                     <div className="col specialShapeContainer"  >
-                        {specialShape.map(example=>
-                            <div className="specialShape">
-                                <div className="figure">
+                        {specialShape.map((example,index)=>
+                            <div key={index} className="specialShape">
+                                <div>
                                     <table>
-                                        {this.ShapeRender(example.Cells)}
+                                        <tbody>
+                                            {this.ShapeRender(example.Cells)}
+                                        </tbody>
                                     </table>
                                 </div>
                                 <div className="desc">{example.Name}</div>

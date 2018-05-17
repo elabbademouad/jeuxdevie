@@ -121,18 +121,20 @@ input[type=range] {
 
   .specialShape {
     margin: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid gray;
     float: left;
     width: 168px;
   }
 
 .specialShape:hover {
-    border: 1px solid #777;
+    border: 1px solid green;
   }
 
 .desc {
-    padding: 10px;
+    padding: 2px;
     text-align: center;
+    color: white;
+    background-color: green;
   }
   .specialShapeContainer{
     margin-top: 49px;
