@@ -127,7 +127,7 @@ input[type=range] {
   }
 
 .specialShape:hover {
-    border: 1px solid green;
+    border: 1px solid black;
   }
 
 .desc {
@@ -137,5 +137,8 @@ input[type=range] {
     background-color: green;
   }
   .specialShapeContainer{
-    margin-top: 49px;
+    margin-top: 20px;
+    height: 700px;
+    overflow-y: scroll;
+    border:2px solid gray;
   }

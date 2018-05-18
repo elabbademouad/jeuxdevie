@@ -10,7 +10,7 @@ class Play extends React.Component{
         this.state={scenne:[],generation:0};
         this.speed=1;
         this.run=false;
-        this.Initilize(50);
+        this.Initilize(63);
     }
     componentDidMount(){
         this.interval=setInterval(this.NextGeneration,this.speed);
@@ -109,7 +109,7 @@ class Play extends React.Component{
         const element=this.state.scenne.map((row,index)=>
             <tr key={index}>
                 {row.map((cell,index2)=>
-                    <td key={index2} ><div className={cell.className} onClick={this.changeState.bind(this,cell)} ></div></td>
+                    <td key={index2} ><div className={cell.className} onClick={this.changeState.bind(this,cell)} onDrop={this.Drop.bind(this,cell)} onDragOver={this.AllowDrop.bind(this)} ></div></td>
                 )}
             </tr>
         );
@@ -123,16 +123,12 @@ class Play extends React.Component{
         else
             cell.className='cell';
        this.setState({scenne:sc});
-       console.log(selectedCell);
-    }
-    OnSizeChange(){
-        this.Grid(this.refs.gridSize.value);
     }
     Pause(){
         this.run=false;
     }
     ClearGrid(){
-        this.Grid(this.refs.gridSize.value);
+        this.Grid(63);
         this.run=false;
         this.setState({generation:0});
     }
@@ -140,8 +136,27 @@ class Play extends React.Component{
         clearInterval(this.interval);
         this.interval=setInterval(this.NextGeneration,1001-this.refs.speed.value);
     }
-    ShapeRender(cells){
+    Drag(shape,event){
+        var shapeString=JSON.stringify(shape);
+        event.dataTransfer.setData("text",shapeString);
+    }
+    AllowDrop(event){
+        event.preventDefault();
+    }
+    Drop(cell,event){
+        event.preventDefault();
+        var data=event.dataTransfer.getData("text");
+        var shape= JSON.parse(data);
+        var sc=this.state.scenne;
+        for (let i = 0; i < shape.length; i++) {
+             shape[i].x=shape[i].x+cell.x;
+             shape[i].y=shape[i].y+cell.y;
+             sc[shape[i].x][shape[i].y].className="cell active";
+        }
+        this.setState({scenne:sc});
 
+    }
+    ShapeRender(cells){
         let shape=[];
         for (let i = 0; i < 15; i++) {
             let shaperow=[];
@@ -169,14 +184,6 @@ class Play extends React.Component{
                     <div className="col" align="left" >
                         <form className="form-inline">
                             <div className="form-group-sm control">
-                                <select className="form-control" ref='gridSize'  onChange={this.OnSizeChange.bind(this)} >
-                                    <option>50</option>
-                                    <option>60</option>
-                                    <option>70</option>
-                                    <option>80</option>
-                                    <option>90</option>
-                                    <option>100</option>
-                                </select>
                             </div>
                             <div className="form-group control">
                                 <input type="button"  className="form-control btn btn-success" onClick={this.Run.bind(this)} value="Run"/>
@@ -200,19 +207,22 @@ class Play extends React.Component{
                             </tbody>
                         </table>
                     </div>
-                    <div className="col specialShapeContainer"  >
-                        {specialShape.map((example,index)=>
-                            <div key={index} className="specialShape">
-                                <div>
-                                    <table>
-                                        <tbody>
-                                            {this.ShapeRender(example.Cells)}
-                                        </tbody>
-                                    </table>
+                    <div className="col">
+                        <h4 >Formes speciales :</h4>
+                        <div className="specialShapeContainer">
+                            {specialShape.map((example,index)=>
+                                <div key={index} draggable="true" onDragStart={this.Drag.bind(this,example.Cells)} className="specialShape">
+                                    <div>
+                                        <table>
+                                            <tbody>
+                                                {this.ShapeRender(example.Cells)}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div className="desc">{example.Name}</div>
                                 </div>
-                                <div className="desc">{example.Name}</div>
-                            </div>
-                        )}
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
